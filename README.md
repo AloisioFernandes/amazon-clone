@@ -1,0 +1,3 @@
+# Amazon Clone
+React
+Firebase

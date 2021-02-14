@@ -13,6 +13,26 @@ const reducer = (state, action) => {
         ...state, // retorna o que estiver no state
         basket: [...state.basket, action.item] // modifica apenas basket do state
       }
+
+      case 'REMOVE_FROM_BASKET':
+        const index = state.basket.findIndex(
+          (basketItem) => basketItem.id === action.id
+        ) // retorna o índice do item que disparou a ação REMOVE_FROM_BASKET
+        let newBasket = [...state.basket]
+
+        if(index >= 0) { // verifica se o índice foi encontrado
+          newBasket.splice(index, 1) // remove o item de índice correspondente
+        } else {
+          console.warn(
+            `Can't remove product (id: ${action.id}) as it's not in basket`
+          )
+        }
+
+        return {
+          ...state,
+          basket: newBasket
+        }
+
     
     default:
       return state

@@ -3,9 +3,21 @@ import './Payment.css'
 import { useStateValue } from '../StateProvider'
 import CheckoutProduct from '../CheckoutProduct/CheckoutProduct'
 import { Link } from 'react-router-dom'
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue() // useContext(StateContext)
+
+  const stripe = useStripe()
+  const elements = useElements()
+
+  const handleSubmit = (e) => {
+
+  }
+
+  const handleChange = (e) => {
+
+  }
 
   return (
     <div className="payment">
@@ -48,6 +60,9 @@ function Payment() {
           </div>
           <div className="payment__details">
 
+            <form onSubmit={handleSubmit}>
+              <CardElement onChange={handleChange} />
+            </form>
           </div>
         </div>
       </div>

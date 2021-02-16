@@ -8,6 +8,7 @@ import { useStateValue } from './StateProvider'
 import Home from './Home/Home'
 import Checkout from './Checkout/Checkout'
 import Login from './Login/Login'
+import Payment from './Payment/Payment'
 
 function App() {
   const [{}, dispatch] = useStateValue() // useContext(StateContext)
@@ -43,6 +44,10 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <Payment />
           </Route>
           <Route path="/">
             <Header />

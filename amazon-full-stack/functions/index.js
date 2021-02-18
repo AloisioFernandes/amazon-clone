@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors');
 const { request } = require("express");
 require('dotenv').config()
-const stripe = require('stripe')(`${process.env.STRIPE_API_KEY}`)
+const stripe = require('stripe')(`${process.env.REACT_APP_STRIPE_API_KEY}`)
 
 // API
 
@@ -20,7 +20,17 @@ app.get('/', (request, response) => response.status(200).send('Hello'))
 app.post('/payments/create', async (request, response) => {
   const total = request.query.total
 
-  console.log('Payment Request Recieved!!!!!!')
+  console.log('Payment Request Recieved!!!!!!', total)
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: total,
+    currency: "usd",
+  })
+
+  // OK - created
+  response.status(201).send({
+    clientSecret: paymentIntent.client_secret
+  })
 })
 
 // Listen commands

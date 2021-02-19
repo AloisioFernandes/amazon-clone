@@ -18,7 +18,7 @@ function Orders() {
         .orderBy('created', 'desc')
         .onSnapshot(snapshot => (
           setOrders(snapshot.docs.map(doc => ({
-            id: doc.uid,
+            id: doc.id,
             data: doc.data()
           })))
         ))

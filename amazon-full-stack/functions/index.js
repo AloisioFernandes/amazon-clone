@@ -3,10 +3,10 @@ const express = require('express')
 const cors = require('cors');
 const { request } = require("express");
 require('dotenv').config()
-const stripe = require('stripe')(process.env.REACT_APP_STRIPE_API_KEY)
+const { REACT_APP_STRIPE_API_KEY } = process.env
+const stripe = require('stripe')(REACT_APP_STRIPE_API_KEY)
 
-// API
-
+// API 
 // App config
 const app = express()
 
